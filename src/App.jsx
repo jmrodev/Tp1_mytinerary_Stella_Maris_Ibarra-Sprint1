@@ -1,15 +1,16 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Layout from "./layouts/Layout";
 
-import './App.css'
-import Layout from './layouts/Layout'
-import Main from './components/Main/Index'
+import Home from "./pages/Home";
 function App() {
   return (
-    <> 
-   <Layout>
-      <Main/>
-   </Layout>
+    <>
+      <Layout>
+        <Home />
+      </Layout>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
