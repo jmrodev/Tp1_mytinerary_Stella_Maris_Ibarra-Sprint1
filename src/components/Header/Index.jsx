@@ -3,15 +3,12 @@
 export default function Header() {
   return (
     <>
-    
-    
-    
-    
+
         <header>
-    <div className="hstack gap-3 bg-light">
+    <div className="gap-3 hstack bg-light">
 
       <div className="p-2 ">
-        <ul className="navbar-nav mx-5">
+        <ul className="mx-5 navbar-nav">
           <li className="nav-item ">
             <a className="nav-link" href="#">My Tinerary</a>
           </li>
@@ -21,10 +18,10 @@ export default function Header() {
       <div className="p-2 ms-auto">
 
         <div className="d-flex">
-          <button type="button" className="btn btn-link px-3 me-2">
+          <button type="button" className="px-3 btn btn-link me-2">
             Home
           </button>
-          <button type="button" className="btn btn-link px-3 me-2">
+          <button type="button" className="px-3 btn btn-link me-2">
             Cities
           </button>
 

@@ -1,8 +1,12 @@
-import React from 'react'
+import Main from "../components/Main/Index"
 
-export default function Home() {
+const Home = () => {
   return (
-    <div>Home</div>
+      <>
+      <h1>Turismo nacional</h1>
+      <Main/>
+      </>
   )
-}
-
+  
+  }
+  export default Home
