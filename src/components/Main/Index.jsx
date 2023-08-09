@@ -8,13 +8,10 @@ import Carousel  from '../Carousel/Index'
  function Index() {
     return (
         <>
-            {/* <main className='flex'>
-                {data.map((city, index) => {
-                   return <CardComponent className='g-5' key={index} href={city.href} text={city.text} title={city.title}
-                  />
-                })}
-           </main> */}
-            <Carousel/>
+        <main className='m-20'>
+             <Carousel/>
+        </main>
+           
         </>
 
     )
