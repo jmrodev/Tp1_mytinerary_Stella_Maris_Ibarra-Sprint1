@@ -1,37 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { data } from '../../utlis/enums';
+import { data } from "../../utlis/enums";
 
-const CarouselGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 10px;
-`;
-
-const CarouselImage = styled.img`
-  max-width: 400px;
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  transition: 1s;
-  &.loaded {
-    opacity: 1;
-  }
-`;
-
-const CarouselButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-`;
-
-const CarouselButton = styled.button`
-  color: white;
-  background-color: #eb118a;
-  padding: 8px;
-  margin: 0 5px;
-`;
 
 export default function Index() {
   const images = [
@@ -44,7 +14,7 @@ export default function Index() {
     data[6].href,
     data[7].href,
     data[8].href,
-    data[9].href
+    data[9].href,
   ];
 
   const [startIndex, setStartIndex] = useState(0);
@@ -59,15 +29,21 @@ export default function Index() {
     setStartIndex(newStartIndex);
   };
 
+  useEffect(() => {
+    const interval = setInterval(next, 4000);
+    return () => clearInterval(interval);
+  }, [startIndex]);
+
   return (
     <>
-      <CarouselGrid>
+      <div className="grid grid-cols-2 grid-rows-2 gap-3 p-6 m-auto align-middle">
         {Array.from({ length: 2 }).map((_, rowIndex) => (
           <React.Fragment key={rowIndex}>
             {Array.from({ length: 2 }).map((_, colIndex) => {
-              const index = (startIndex + rowIndex * 2 + colIndex) % images.length;
+              const index =
+                (startIndex + rowIndex * 2 + colIndex) % images.length;
               return (
-                <CarouselImage
+                <img
                   key={colIndex}
                   src={images[index]}
                   alt=""
@@ -77,12 +53,21 @@ export default function Index() {
             })}
           </React.Fragment>
         ))}
-      </CarouselGrid>
-      
-      <CarouselButtonContainer>
-        <CarouselButton onClick={previous}>{"<"}</CarouselButton>
-        <CarouselButton onClick={next}>{">"}</CarouselButton>
-      </CarouselButtonContainer>
+      </div>
+      <div className="flex justify-center mt-14 ">
+        <button
+          className="px-4 py-2 m-1 text-white bg-purple-600 rounded-full shadow-md hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-300"
+          onClick={previous}
+        >
+          {"<"}
+        </button>
+        <button
+          className="px-4 py-2 m-1 text-white bg-purple-600 rounded-full shadow-md hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-300"
+          onClick={next}
+        >
+          {">"}
+        </button>
+      </div>
     </>
   );
 }
