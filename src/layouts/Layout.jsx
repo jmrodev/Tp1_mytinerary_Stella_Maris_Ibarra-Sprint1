@@ -1,16 +1,16 @@
 import Header from "../components/Header/Index";
-import Footer from '../components/Footer/Index'
+import Footer from "../components/Footer/Index";
+import { Outlet } from "react-router-dom";
 
-function Layout({children}) {
+export default function Layout() {
   return (
     <>
-    <Header/>
-       {children}
-    <Footer/>
+      <Header/>
+      <div style={{ minHeight: "calc(100vh - 120px)" }}>
+
+        <Outlet />
+        </div>
+      <Footer/>
     </>
-    
-  )
+  );
 }
-export default Layout;
-
-

@@ -12,8 +12,8 @@ import T from '../assets/Images/Tucuman.jpg';
 export const data = [
   {
     href: BA,
-    text: "Vibrante capital con arquitectura europea y tango en cada esquina.",
-    title: "Buenos Aires",
+    text: "Our app will help you find the perfect path for your next trip. With an easy-to-use interface and a host of itinerary options, planning your next trip has never been easier..",
+    title: "Find the perfect destination",
   },
   {
     href: LP,
