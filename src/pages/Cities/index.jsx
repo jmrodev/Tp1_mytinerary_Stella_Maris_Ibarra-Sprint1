@@ -1,18 +1,25 @@
 import React from "react";
-import { useParams } from "react-router-dom";
- 
+
+    import CarouselCities from "../../components/CarouselCities/Index";
+    import {data} from "../../utlis/enums"
 function Cities() {
 
-  let {id}= useParams();
+ 
 
   return (
-    <div>
-      <h2>El ID de La ciudad es </h2>
 
-
-      <p>{id}</p>
-      
-    </div>
+    
+    
+  
+   
+    
+      <CarouselCities
+            href={data[0].href}
+            text={data[0].text}
+            title={data[0].title}
+            
+          />
+    
   );
 }
 export default Cities;
