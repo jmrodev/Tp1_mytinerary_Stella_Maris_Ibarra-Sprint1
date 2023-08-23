@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardCity from "../../components/CardCity/Index.jsx";
 import { getAllCities } from "../services/cityService.js";
+import CityDetails from "../CitiesDetail/Index.jsx";
 
 const Cities = () => {
   const [cities, setCities] = useState([]);
@@ -16,10 +17,10 @@ const Cities = () => {
   }, []);
 
   return (
-    <section>
-      <h2>Cities</h2>
+    
+    <section className="flex gap-5 flex-wrap p-10 mt-6 justify-content-center 	">
       {cities.map((city) => (
-        <CardCity key={city._id} city={city} />
+        <CardCity  key={city._id} city={city} />
       ))}
     </section>
   );

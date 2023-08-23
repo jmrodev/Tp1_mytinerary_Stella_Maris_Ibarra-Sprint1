@@ -8,7 +8,7 @@ const CardCity = ({ city }) => {
     <div className="card col-10 col-md-5 col-xl-3">
       <img
         className="card-img-top h-75"
-        src={city.image}
+        src={city.img}
         alt=""
       />
       <div className="card-body">
