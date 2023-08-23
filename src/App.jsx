@@ -10,27 +10,30 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    children: [{ path: "/", element: <Home /> }],
+
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/cities/:id",
+        element: <Cities />,
+      },
+      {
+        path: "/cities",
+        element: <Cities />,
+      },
+      {
+        path: "*",
+        element: <Error404 />,
+      },
+    ],
   },
-  {
-    path: "/cities/:id",
-    element: <Layout />,
-    children: [{ path: "/cities/:id", element: <Cities /> }],
-  },
-  {
-    path: "/cities",
-    element: <Layout />,
-    children: [{ path: "/cities", element: <Cities /> }],
-  },
-  { path: "*", element: <Error404 /> },
 ]);
 
 function App() {
-  return (
-    <>
-      <RouterProvider router={router}></RouterProvider>
-    </>
-  );
+  return <RouterProvider router={router}></RouterProvider>
 }
-
+  
 export default App;

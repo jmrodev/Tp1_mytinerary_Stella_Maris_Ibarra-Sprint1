@@ -1,25 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import CardCity from "../../components/CardCity/Index.jsx";
+import { getAllCities } from "../services/cityService.js";
 
-    import CarouselCities from "../../components/CarouselCities/Index";
-    import {data} from "../../utlis/enums"
-function Cities() {
+const Cities = () => {
+  const [data, setData] = useState([]);
 
- 
+  useEffect(() => {
+    getAllCities().then(setData);
+  }, []);
 
   return (
-
-    
-    
-  
-   
-    
-      <CarouselCities
-            href={data[0].href}
-            text={data[0].text}
-            title={data[0].title}
-            
-          />
-    
+    <div>
+      <h2>Lista de Ciudades</h2>
+      <ul>
+        {data.map((city) => (
+          <li key={city.id}>{city.name}</li> // Suponiendo que hay una propiedad "id" y "name" en cada objeto ciudad
+        ))}
+      </ul>
+    </div>
   );
-}
+};
+
 export default Cities;

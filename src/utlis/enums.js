@@ -10,9 +10,9 @@ import SF from '../assets/Images/Santa-fe.jpg';
 import T from '../assets/Images/Tucuman.jpg';
 import Bari from'../assets/Images/Bariloche.jpg';
 import Cata from '../assets/Images/Cataratas-De-Iguazu.jpg';
-import SC from '../assets/Images/Santa-Clara-Del-Mar.jpg';
-import P from '../assets/Images/Puerto Madrin.jpg';
-import Cal from '../assets/Images/Calafate (1).jpg'
+//  import SC from '../assets/Images/Santa-Clara-Del-Mar.jpg';
+// import PM from '../assets/Images/Puerto Madrin.jpg';
+//  import Cal from '../assets/Images/Calafate.jpg'
 
 export const data = [
   {
@@ -66,28 +66,28 @@ export const data = [
     title: "Tucumán",
   },
   {
-    href:Bari,
+    href: Bari,
     text:"San Carlos de Bariloche (comúnmente llamada Bariloche) es una ciudad en la región de la Patagonia argentina.",
     title : "Bariloche",
   },
   {
-    href:Cata,
+    href:Cata ,
     text :"Las cataratas del Iguazú son el principal centro turístico del noreste de Argentina, y uno de los principales de todo el país.",
     title : "Cataratas De Iguazu",
   },
-  {
-    href :SC,
-    text :"Santa Clara del Mar es una ciudad de la costa atlántica bonaerense, ubicada en el litoral del mar Argentino, al este de la provincia de Buenos Aires.",
-    title : "Santa Clara del Mar",
-  },
-  {
-    href :P,
-    text :"Puerto de Madryn es una ciudad argentina en la costa de la zona norte de la Patagonia.",
-    title : "Puerto Madryn",
-  },
-  {
-    href : Cal,
-    text :"El Calafate es una ciudad cerca del borde del Campo de Hielo Patagónico Sur en la provincia argentina de Santa Cruz",
-    title :"Calafate",
-  }
+  // {
+  //   href : SC,
+  //   text :"Santa Clara del Mar es una ciudad de la costa atlántica bonaerense, ubicada en el litoral del mar Argentino, al este de la provincia de Buenos Aires.",
+  //   title : "Santa-Clara-Del-Mar",
+  // },
+  // {
+  //   href : PM,
+  //   text :"Puerto de Madryn es una ciudad argentina en la costa de la zona norte de la Patagonia.",
+  //   title : "Puerto Madrin",
+  // },
+  // {
+  //   href : Cal,
+  //   text :"El Calafate es una ciudad cerca del borde del Campo de Hielo Patagónico Sur en la provincia argentina de Santa Cruz",
+  //   title : "Calafate",
+  // } 
 ];
