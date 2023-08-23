@@ -3,21 +3,25 @@ import CardCity from "../../components/CardCity/Index.jsx";
 import { getAllCities } from "../services/cityService.js";
 
 const Cities = () => {
-  const [data, setData] = useState([]);
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
-    getAllCities().then(setData);
+    // fetch("http://localhost:3000/api/cities")
+    //   .then((response) => response.json())
+    getAllCities()
+      .then((data) => {
+        setCities(data);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   return (
-    <div>
-      <h2>Lista de Ciudades</h2>
-      <ul>
-        {data.map((city) => (
-          <li key={city.id}>{city.name}</li> // Suponiendo que hay una propiedad "id" y "name" en cada objeto ciudad
-        ))}
-      </ul>
-    </div>
+    <section>
+      <h2>Cities</h2>
+      {cities.map((city) => (
+        <CardCity key={city._id} city={city} />
+      ))}
+    </section>
   );
 };
 
