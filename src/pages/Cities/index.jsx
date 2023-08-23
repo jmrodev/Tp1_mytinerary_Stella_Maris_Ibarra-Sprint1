@@ -29,18 +29,82 @@ const Cities = () => {
     if (search) {
       query += "name=" + search;
     }
-    getAllCities(query).then(setCities);
+    //getAllCities(query).then(setCities);
+    getAllCities(query).then((data) => {
+      setCities(data);
+    }
+    ).catch((error) => console.log(error));
+    
+
   };
 
-  return (
-    
-    <section className="flex gap-5 flex-wrap p-10 mt-6 justify-content-center 	">
+  return ( <div>
+    <h2 className="text-center mb-2">Cities</h2>
+    <div className="d-flex flex-wrap gap-3 justify-center">
+      <div className="col-10">
+        <div className="mb-3">
+          <div className="mb-3">
+            <label className="form-label">Cities</label>
+            <select
+              defaultValue="all"
+              className="form-select form-select-lg"
+              name=""
+              id=""
+              onInput={handleInput}
+              ref={select}
+            >
+             
+             
+              <option defaultValue="all" selected>
+                {" "}
+                All{" "}
+              </option>
+            
+            {/* {
+              cities.map((city) => (
+                <option key={city} defaultValue={city}>
+                  {city}
+                </option>
+              ))
+
+            } */}
+
+               {/* {{cities.map((city) => (
+                <option key={city} defaultValue={city}>
+                  {city}
+                </option>
+              ))} } */}
+
+
+            </select>
+          </div>
+
+          <input
+            type="text"
+            className="form-control"
+            name=""
+            id=""
+            aria-describedby="helpId"
+            placeholder=""
+            onInput={handleInput}
+            ref={inputBusqueda}
+          />
+        </div>
+      </div>
       {cities.map((city) => (
-        <CardCity  key={city._id} city={city} />
+        <CardCity key={city._id} city={city} />
       ))}
-    </section>
-  );
+    </div>
+  </div>
+);
 };
+//     <section className="flex gap-5 flex-wrap p-10 mt-6 justify-content-center 	">
+//       {cities.map((city) => (
+//         <CardCity  key={city._id} city={city} />
+//       ))}
+//     </section>
+//   );
+// };
 
 
 
