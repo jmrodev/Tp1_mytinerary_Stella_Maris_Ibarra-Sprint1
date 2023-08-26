@@ -6,6 +6,7 @@ import CityDetails from "../CitiesDetail/Index.jsx";
 const Cities = () => {
   const [cities, setCities] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [quantity, setQuantity] = useState(15); // Cantidad de ciudades a mostrar
 
   useEffect(() => {
     getAllCities().then((response) => {
@@ -20,11 +21,12 @@ const Cities = () => {
   const filteredCities = cities.filter((city) =>
     city.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
- 
+
+  const citiesToRender = filteredCities.slice(0, quantity);
 
   return (
     <div>
-      <h1>List of Cities</h1>
+      <h1 className="text-black m-4 ">Argentina</h1>
       <div className="mb-3">
         <input
           type="text"
@@ -33,8 +35,8 @@ const Cities = () => {
           onChange={handleSearchChange}
         />
       </div>
-      <div className="row">
-        {filteredCities.map((city) => (
+      <div className="row gap-5 m-5">
+        {citiesToRender.map((city) => (
           <CardCity key={city._id} city={city} />
         ))}
       </div>
