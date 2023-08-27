@@ -17,12 +17,22 @@ const CitiesDetails = () => {
   }
   , [id]);
 
+    const goBack = () => {
+        window.history.back();
+
+  }
+
 return (
 
   
     <>
       <h1 className="text-black m-4 ">Argentina</h1>
-      <div className="mb-3">
+
+      <button onClick={goBack}>
+       Go back
+    </button>
+    
+      <div className="mb-3 ">
         {/* <input
           type="text"
           placeholder="Search city..."

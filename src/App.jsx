@@ -3,6 +3,7 @@ import "./App.css";
 import Layout from "./layouts/Layout";
 import Home from "./pages/Home/Home";
 import Cities from "./pages/Cities/index";
+import CitiesDetails from "./components/CitiesDetail/Index.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error404 from "./pages/NotFound/404";
 
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/cities/:id",
-        element: <Cities />,
+        element: <CitiesDetails />,
       },
       {
         path: "/cities",

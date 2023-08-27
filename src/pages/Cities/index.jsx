@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardCity from "../../components/CardCity/Index.jsx";
 import { getAllCities } from "../services/cityService.js";
-import CityDetails from "../CitiesDetail/Index.jsx";
+import CityDetails from "../../components/CitiesDetail/Index.jsx";
 
 const Cities = () => {
   const [cities, setCities] = useState([]);
@@ -26,8 +26,8 @@ const Cities = () => {
 
   return (
     <div>
-      <h1 className="text-black m-4 ">Argentina</h1>
-      <div className="mb-3">
+      <h1 className="text-black m-4 p-2 fs-3 fw-bolder">Argentina</h1>
+      <div className="mb-3 d-flex justify-content-center">
         <input
           type="text"
           placeholder="Search city..."
