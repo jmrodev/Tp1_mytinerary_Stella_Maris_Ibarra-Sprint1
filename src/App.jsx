@@ -7,6 +7,7 @@ import CitiesDetails from "./components/CitiesDetail/Index.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error404 from "./pages/NotFound/404";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

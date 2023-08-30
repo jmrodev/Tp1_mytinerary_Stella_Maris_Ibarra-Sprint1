@@ -2,25 +2,34 @@ import React, { useEffect, useState } from "react";
 import CardCity from "../../components/CardCity/Index.jsx";
 import { getAllCities } from "../services/cityService.js";
 import CityDetails from "../../components/CitiesDetail/Index.jsx";
+import { citiesAction } from "../../store/actions/citiesAction.js";
+import { connect } from "react-redux";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { citiesActions } from "../../redux/actions/citiesActions.js";
+
+
 
 const Cities = () => {
+
+
   const [cities, setCities] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [quantity, setQuantity] = useState(15); // Cantidad de ciudades a mostrar
 
+
   const citiesInstore = useSelector(store => store.citiesReducer.cities);
   console.log(citiesInstore);
 
-  const dispatch = useDispatch ()
+   const dispatch = useDispatch ()
+ 
 
   useEffect(() => {
+
     getAllCities().then((response) => {
 
       setCities(response);
-      dispatch (citiesActions.add_cities(response.data))
+      dispatch (citiesAction.add_cities(response))
+
     });
 
   }, []);
@@ -47,7 +56,7 @@ const Cities = () => {
         />
       </div>
       <div className="row gap-5 m-5">
-        {citiesToRender.map((city) => (
+        {citiesInstore.map((city) => (
           <CardCity key={city._id} city={city} />
         ))}
       </div>
