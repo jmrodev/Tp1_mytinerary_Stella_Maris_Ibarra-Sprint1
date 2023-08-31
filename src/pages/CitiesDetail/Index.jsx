@@ -12,7 +12,7 @@ const CitiesDetails = () => {
 
   useEffect(() => {
     getCityById(id).then((response) => {
-      setCity(response);
+      setCity(response.data);
     });
   }
   , [id]);

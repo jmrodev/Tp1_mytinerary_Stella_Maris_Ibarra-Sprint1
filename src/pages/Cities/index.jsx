@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from "react";
-import CardCity from "../../components/CardCity/Index.jsx";
-import { getAllCities } from "../services/cityService.js";
-import CityDetails from "../../components/CitiesDetail/Index.jsx";
+import CardCity from "../../components/CardCity/Index";
+import { getAllCities } from "../services/cityService";
+import { useDispatch, useSelector } from "react-redux";
+import citiesActions from "../../store/actions/cities";
+
+
 
 const Cities = () => {
+  const citiesQuantity = 15
   const [cities, setCities] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [quantity, setQuantity] = useState(15); // Cantidad de ciudades a mostrar
+  const [quantity, setQuantity] = useState(citiesQuantity); 
+
+  let citiesinStore = useSelector((store) => store.citiesReducer.cities);
+  console.log(citiesinStore);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getAllCities().then((response) => {
-      setCities(response);
+      setCities(response.data);
+      dispatch(citiesActions.add_cities(response.data));
     });
   }, []);
-  
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
