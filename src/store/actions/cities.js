@@ -11,8 +11,5 @@ const add_cities = createAction(
             }
         }
     });
-
-
 const citiesActions = { add_cities };
-
 export default citiesActions;

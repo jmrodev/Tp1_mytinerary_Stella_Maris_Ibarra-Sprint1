@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import CardCity from "../../components/CardCity/Index";
 import { getAllCities } from "../services/cityService";
-import { useDispatch, useSelector } from "react-redux";
 import citiesActions from "../../store/actions/cities";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cities = () => {
   const citiesQuantity = 15;
-  const [cities, setCities] = useState([]);
+  //const [cities, setCities] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [quantity, setQuantity] = useState(citiesQuantity);
 
   let citiesinStore = useSelector((store) => store.citiesReducer.cities);
+  console.log("citiesstore",citiesinStore);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     getAllCities().then((response) => {
-      setCities(response.data);
+      //setCities(response.data);
       dispatch(citiesActions.add_cities(response.data));
     });
   }, []);
@@ -25,7 +26,7 @@ const Cities = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredCities = cities.filter((city) =>
+  const filteredCities = citiesinStore.filter((city) =>
     city.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
