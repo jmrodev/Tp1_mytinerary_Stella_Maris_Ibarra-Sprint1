@@ -4,16 +4,13 @@ import { getAllCities } from "../services/cityService";
 import { useDispatch, useSelector } from "react-redux";
 import citiesActions from "../../store/actions/cities";
 
-
-
 const Cities = () => {
-  const citiesQuantity = 15
+  const citiesQuantity = 15;
   const [cities, setCities] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [quantity, setQuantity] = useState(citiesQuantity); 
+  const [quantity, setQuantity] = useState(citiesQuantity);
 
   let citiesinStore = useSelector((store) => store.citiesReducer.cities);
-  console.log(citiesinStore);
 
   const dispatch = useDispatch();
 
@@ -47,6 +44,7 @@ const Cities = () => {
       </div>
       <div className="row gap-5 m-5">
         {citiesToRender.map((city) => (
+        
           <CardCity key={city._id} city={city} />
         ))}
       </div>
