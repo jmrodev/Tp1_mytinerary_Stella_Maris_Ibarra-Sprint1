@@ -15,11 +15,9 @@ const Cities = () => {
 
   const dispatch = useDispatch();
 
+
   useEffect(() => {
-    getAllCities().then((response) => {
-      //setCities(response.data);
-      dispatch(citiesActions.add_cities(response.data));
-    });
+    dispatch(citiesActions.getCities());
   }, []);
 
   const handleSearchChange = (event) => {
