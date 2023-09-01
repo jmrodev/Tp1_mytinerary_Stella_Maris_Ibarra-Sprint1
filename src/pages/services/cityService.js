@@ -7,6 +7,7 @@ baseURL: API_URL
 } );
 
 
+
 export const getAllCities = async (queryParams = "") => {
     try {
         const response = await citiesQueries(queryParams);
