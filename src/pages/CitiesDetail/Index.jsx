@@ -1,41 +1,37 @@
-import  React from 'react';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { getCityById } from '../../pages/services/cityService.js';
-import CardCity from '../CardCity/Index.jsx'; 
-import UnderConstruction from '../UnderConstruction/Index.jsx';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import CardCity from "../CardCity/Index.jsx";
+import citiesActions from "../../redux/actions/cities";
+import UnderConstruction from "../UnderConstruction/Index.jsx";
 
 const CitiesDetails = () => {
-
-  const [city, setCity] = useState({});
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getCityById(id).then((response) => {
-      setCity(response.data);
-    });
-  }
-  , [id]);
+    dispatch(citiesActions.loadCity(id));
 
-return (
+    return () => dispatch(citiesActions.resetCity());
+  }, []);
 
-  
+  const cityStore = useSelector((store) => store.cities.city);
+  console.log(cityStore);
+
+  return (
     <>
       <h1 className="text-black m-4 ">Argentina</h1>
-      <div className="mb-3">
-        {/* <input
-          type="text"
-          placeholder="Search city..."
-        /> */}
-      </div>
+      <div className="mb-3"></div>
       <div className="row gap-5 m-5">
-        
-          <CardCity key={city._id} city={city} />
-        
+        {cityStore ? (
+          <CardCity key={cityStore._id} city={cityStore} />
+        ) : (
+          <UnderConstruction />
+        )}
       </div>
-     <UnderConstruction/>
-     </>
-   
-  );}
+    </>
+  );
+};
 
 export default CitiesDetails;
