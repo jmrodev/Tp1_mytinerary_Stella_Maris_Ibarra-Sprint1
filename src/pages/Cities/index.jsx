@@ -11,6 +11,7 @@ const Cities = () => {
   const inputSearch = useRef(null);
 
   const citiesStore = useSelector((store) => store.cities );
+  console.log(citiesStore);
   const dispatch = useDispatch();
 
   useEffect(() => {
