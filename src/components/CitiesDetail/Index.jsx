@@ -1,7 +1,7 @@
 import  React from 'react';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { getCityById } from '../../pages/services/cityService.js';
+import { getCityById } from '../../services/cityService.js';
 import CardCity from '../CardCity/Index.jsx'; 
 import UnderConstruction from '../UnderConstruction/Index.jsx';
 

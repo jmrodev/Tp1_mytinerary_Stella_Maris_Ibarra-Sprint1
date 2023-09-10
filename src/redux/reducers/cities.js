@@ -1,65 +1,32 @@
 import { createReducer } from "@reduxjs/toolkit";
-import citiesActions from "../actions/cities";
+import { filterCities, loadCities, loadCitiesAsync } from "../actions/cities";
+
 
 const initialState = {
-  allCities: [],
-  filteredCities: [],
-  itineraries:[],
-  city:null
-};
+    cities: [],
+    filteredEvents : []
+}
 
-const citiesReducer = createReducer(
-  initialState,
-  (builder) => {
-
+const citiesReducer = createReducer(initialState, (builder) => {
     builder
 
-      .addCase(citiesActions.loadCities, (state, action) => {
-        return { 
-          ...state,
-          allCities: action.payload,
-          filteredCities: action.payload
-           };
-      })
+        .addCase(loadCities, (actualState, action) => {
 
-      .addCase(citiesActions.filterCities, (state, action) => {
-        const filteredSearch= state.allCities.filter(
-          city => city.name.toLowerCase().includes(action.payload.inputValue)
-          )
-          let newFilteredCities = filteredSearch
-          if(action.payload.selectedItinerary != "All"){
-            newFilteredCities = newFilteredCities.filter(
-              city => city.itinerary.itinerary=action.payload.selectedItinerary)}
-        return {
-          ...state,
-          filteredCities: newFilteredCities
-        }
-      })
+            return {
+                ...actualState,
+                cities: action.payload
+            }
+        })
 
+        .addCase(loadCitiesAsync.fulfilled, (actualState, action) => {
 
-      .addCase(citiesActions.loadCitiesAsync, (state, action) => {
-        return { 
-          ...state, 
-          allCities: action.payload,
-          filteredCities: action.payload
-         };
-      })
+            return {
+                ...actualState,
+                cities: action.payload,
+                filteredEvents: action.payload
+            }
+        })
 
-      .addCase(citiesActions.loadCity.fulfilled, (state, action) => {
-        return { 
-          ...state, 
-          city: action.payload,
-         };
-      }      )
-
-
-      .addCase(citiesActions.resetCity, (state, action) => {
-        return { 
-          ...state, 
-          city: action.payload,
-         };
-      });
-  }
-);
+});
 
 export default citiesReducer;

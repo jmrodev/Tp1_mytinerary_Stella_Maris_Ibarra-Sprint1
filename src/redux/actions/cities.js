@@ -1,50 +1,35 @@
-import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-    getAllCities,
-    getCityById
-} from "../../pages/services/cityService";
+import { createAction,createAsyncThunk } from "@reduxjs/toolkit";
+import { getAllCities } from "../../services/cityService";
 
-const loadCities = createAction("load_cities", (cities) => {
+export const loadCities = createAction("load_cities",(payload)=>{
     return {
-        payload: cities,
-    };
-});
-
-const loadCitiesAsync = createAsyncThunk("load_cities_async", async () => {
-    const cities = getAllCities
-    return cities
+        payload
+    }
 
 });
 
-export const loadCity = createAsyncThunk("load_city", async (id) => {
-    const city = await getCityById(id);
-    return city;
+
+export const loadCitiesAsync = createAsyncThunk("load_cities_async",async()=>{
+   try {
+     
+         const response = await getAllCities();
+            // console.log("response loadcitiesasync",response.data.data);
+            return response.data;
+   } catch (error) {
+         console.log("error",error);
+            return []
+              
+   }
 });
 
-export const resetCity = createAction("reset_city", () => {
-    return {
-        payload: null,
-    };
-});
 
-export const filterCities = createAction("filter_cities", (itinerary, search) => {
+
+export  const filterCities = createAction("filter_cities",(itinerary,search)=>{
     return {
         payload: {
-            selectedItinerary: itinerary,
-            inputValue: search
+           selectedItinerary: itinerary,
+            inputValue : search
+        }
+    }
+}   )
 
-        },
-    };
-}
-);
-
-
-const citiesActions = {
-    loadCities,
-    loadCitiesAsync,
-    loadCity,
-    resetCity,
-    filterCities
-};
-
-export default citiesActions;
