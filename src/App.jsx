@@ -3,7 +3,7 @@ import "./App.css";
 import Layout from "./layouts/Layout";
 import Home from "./pages/Home/Home";
 import Cities from "./pages/Cities/index";
-import CitiesDetails from "./components/CitiesDetail/Index.jsx";
+import Details from "./components/Details/Index"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error404 from "./pages/NotFound/404";
 
@@ -13,24 +13,12 @@ const router = createBrowserRouter([
     element: <Layout />,
 
     children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/cities/:id",
-        element: <CitiesDetails />,
-      },
-      {
-        path: "/cities",
-        element: <Cities />,
-      },
-      {
-        path: "*",
-        element: <Error404 />,
-      },
-    ],
-  },
+      {path: "/", element: <Home />},
+      {path: "/cities/:id",element: <Details/>},
+      {path: "/api/cities",element: <Cities />},
+      {path: "*",element: <Error404 />}
+    ]
+  }
 ]);
 
 function App() {

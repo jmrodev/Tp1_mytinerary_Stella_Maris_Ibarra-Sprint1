@@ -1,78 +1,28 @@
-import React, { useEffect, useState, useRef } from "react";
-import CardCity from "../../components/CardCity/Index";
-import { useSelector, useDispatch } from "react-redux";
-import { loadCities, filterCities,loadCitiesAsync } from "../../redux/actions/cities";
-import { getAllItineraries } from "../../services/itineraryService";
 
-const Cities = () => {
+import { createReducer } from "@reduxjs/toolkit";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import  getCities  from '../../redux/actions/cities.js'
+import CardCity from "../../components/CardCity/Index.jsx"
 
-  const [itineraries, setItineraries] = useState([]);
-
-  const select = useRef(null);
-
-  const inputSearch = useRef(null);
-
+function CitiesPage() {
   const dispatch = useDispatch();
+  const cities = useSelector((state) => state.cities);
 
-  const {filterCities: cities, } = useSelector((state) => state.cities);
 
   useEffect(() => {
-      dispatch(loadCitiesAsync());
-      getAllItineraries().then((res) => {
-        setItineraries(res.map((item) => item.itinerary));
-      }
-    )
-  }, []);
-
-   
-  const handleInput = () => {
-    dispatch(filterCities(
-      select.current.value,
-       inputSearch.current.value
-       ));
-  };
-
+    // Despacha la acción para obtener las ciudades cuando se monta el componente
+    dispatch(getCities());
+  }, [dispatch]);
   return (
     <div>
-      <h1 className="text-black m-4 p-2 fs-3 fw-bolder">Argentina</h1>
-      <div className="mb-3 d-flex justify-content-center">
-        <div className="mb-3">
-          <label className="form-label">Cities</label>
-          <select
-            defaultValue="All"
-            className="form-select form-select-lg"
-            name=""
-            id=""
-            onInput={handleInput}
-            ref={select}
-          >
-            <option value="All"> All </option>
-            {itineraries.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
-        <input
-          type="text"
-          className="form-control"
-          name=""
-          id=""
-          aria-describedby="helpId"
-          placeholder=""
-          onInput={handleInput}
-          ref={inputSearch}
-        />
-      </div>
-
-      {/* <div className="row gap-5 m-5">
-        {cities.filterCities.map((city) => (
-          <CardCity key={city._id} city={city} />
-        ))}
-      </div>  */}
+      <h1>Cities</h1>
+    
+    {cities.cities.map((city) => (
+        <CardCity city={city} key={city._id}/>
+      ))}
     </div>
   );
-};
+}
 
-export default Cities;
+export default CitiesPage;

@@ -1,32 +1,24 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { filterCities, loadCities, loadCitiesAsync } from "../actions/cities";
+import citiesAction from "../actions/cities.js"
+const  getCities  = citiesAction;
 
 
 const initialState = {
-    cities: [],
-    filteredEvents : []
+    cities: []
 }
 
-const citiesReducer = createReducer(initialState, (builder) => {
+const citiesReducer = createReducer(initialState,(builder)=> {
     builder
+    
+    .addCase(getCities.fulfilled, (state, action) => {
+        
+        return {
+            ...state,
+            cities: action.payload
 
-        .addCase(loadCities, (actualState, action) => {
-
-            return {
-                ...actualState,
-                cities: action.payload
-            }
-        })
-
-        .addCase(loadCitiesAsync.fulfilled, (actualState, action) => {
-
-            return {
-                ...actualState,
-                cities: action.payload,
-                filteredEvents: action.payload
-            }
-        })
-
-});
+        }
+    })}
+)
 
 export default citiesReducer;
+

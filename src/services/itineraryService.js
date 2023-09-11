@@ -1,16 +1,18 @@
-import axios from 'axios'
+// import axios from "axios";
 
-const API_URL = 'http://localhost:3000/api/cities';
+// const API_URL = "http://192.168.0.6:3000/api/itineraries";
 
-const itinerariesQueries = axios.create( {
-baseURL: API_URL
-} );
+// const itinerariesQueries = axios.create({
+//   baseURL: API_URL,
+// });
 
-export const getAllItineraries = async ( ) => {
-    try {
-        const response = await itinerariesQueries( )
-        return response.data
-    } catch (error) {
-        return []
-    }
-}
+// export const getAllItineraries = async () => {
+//   try {
+//     const response = await itinerariesQueries();
+//     // console.log("get all itineraries", response.data.response);
+
+//     return response;
+//   } catch (error) {
+//     return [];
+//   }
+// };

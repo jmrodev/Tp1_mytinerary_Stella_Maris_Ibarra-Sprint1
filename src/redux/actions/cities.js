@@ -1,35 +1,22 @@
-import { createAction,createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllCities } from "../../services/cityService";
+import { createAsyncThunk } from "@reduxjs/toolkit"
+import API from "../../utlis/axios.js"
 
-export const loadCities = createAction("load_cities",(payload)=>{
-    return {
-        payload
-    }
+const getCities = createAsyncThunk('get cities', async () => {
 
-});
+try {
+    console.log("funcion inicial");
 
+    const response = await API.get('/api/cities')
+    
+    return response.data.data
+} catch (error) {
 
-export const loadCitiesAsync = createAsyncThunk("load_cities_async",async()=>{
-   try {
-     
-         const response = await getAllCities();
-            // console.log("response loadcitiesasync",response.data.data);
-            return response.data;
-   } catch (error) {
-         console.log("error",error);
-            return []
-              
-   }
-});
+    console.log("error ",error);
+    
+}
 
+    
 
+})
 
-export  const filterCities = createAction("filter_cities",(itinerary,search)=>{
-    return {
-        payload: {
-           selectedItinerary: itinerary,
-            inputValue : search
-        }
-    }
-}   )
-
+export default getCities 
