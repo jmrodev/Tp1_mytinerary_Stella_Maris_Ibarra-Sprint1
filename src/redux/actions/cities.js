@@ -4,7 +4,6 @@ import API from "../../utlis/axios.js"
 const getCities = createAsyncThunk('get cities', async () => {
 
 try {
-    console.log("funcion inicial");
 
     const response = await API.get('/api/cities')
     
@@ -14,9 +13,6 @@ try {
     console.log("error ",error);
     
 }
-
-    
-
 })
 
 export default getCities 
