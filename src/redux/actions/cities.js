@@ -1,18 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import API from "../../utlis/axios.js"
+import API  from "../../utlis/axios.js"
 
-const getCities = createAsyncThunk('get cities', async () => {
 
-try {
+const getCities = createAsyncThunk('getCities', async () => {
 
-    const response = await API.get('/api/cities')
-    
-    return response.data.data
-} catch (error) {
-
-    console.log("error ",error);
-    
-}
+    const response = await API.get('/')
+    const cities = await response.data
+    console.log(cities);
+    return cities
 })
 
-export default getCities 
+const actionsCities = {
+    getCities
+}
+
+export default actionsCities

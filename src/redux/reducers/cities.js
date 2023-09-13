@@ -1,23 +1,23 @@
 import { createReducer } from "@reduxjs/toolkit";
-import citiesAction from "../actions/cities.js"
-const  getCities  = citiesAction;
+import  getCities  from "../actions/cities.js"
 
 
-const initialState = {
-    cities: []
+const initialState ={
+    name: "",
+    country: "",
+    image: "",
+    _itineraries: []
 }
 
-const citiesReducer = createReducer(initialState,(builder)=> {
-    builder
-    
-    .addCase(getCities.fulfilled, (state, action) => {
-        
-        return {
-            ...state,
-            cities: action.payload
+const citiesReducer = createReducer(
+    initialState,
+    (builder) => builder
+        .addCase(getCities.fulfilled, (state, action) => {
+            console.log(state,action);
+           const  newState = [...state,action.payload]
+              return newState
+        })
 
-        }
-    })}
 )
 
 export default citiesReducer;
