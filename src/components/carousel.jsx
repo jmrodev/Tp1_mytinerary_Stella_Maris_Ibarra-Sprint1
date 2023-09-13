@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { data } from "../../utlis/enums";
+import { data } from "../utlis/enums";
 
 
 export default function Index() {

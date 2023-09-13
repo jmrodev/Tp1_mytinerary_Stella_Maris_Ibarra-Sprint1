@@ -1,5 +1,5 @@
 import React from 'react';
-import  './style/NotFound.css'; // Asegúrate de crear este archivo CSS para estilizar la página
+import  './style.css'; // Asegúrate de crear este archivo CSS para estilizar la página
 
 const NotFound = () => {
   return (
